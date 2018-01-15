@@ -22,7 +22,9 @@ class CapsNet(object):
                 self.X, self.labels = get_batch_data(cfg.dataset, cfg.batch_size, cfg.num_threads)
                 self.Y = tf.one_hot(self.labels, depth=10, axis=1, dtype=tf.float32)
 
-                self.build_arch()
+                with tf.variable_scope('pi'):
+                    with tf.variable_scope('actor'):
+                        self.build_arch()
                 self.loss()
                 self._summary()
 

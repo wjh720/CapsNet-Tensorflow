@@ -25,13 +25,13 @@ class CapsNet(object):
                 with tf.variable_scope('pi'):
                     with tf.variable_scope('actor'):
                         self.build_arch()
-                self.loss()
-                self._summary()
+                        self.loss()
+                        self._summary()
 
-                # t_vars = tf.trainable_variables()
-                self.global_step = tf.Variable(0, name='global_step', trainable=False)
-                self.optimizer = tf.train.AdamOptimizer()
-                self.train_op = self.optimizer.minimize(self.total_loss, global_step=self.global_step)  # var_list=t_vars)
+                        # t_vars = tf.trainable_variables()
+                        self.global_step = tf.Variable(0, name='global_step', trainable=False)
+                        self.optimizer = tf.train.AdamOptimizer()
+                        self.train_op = self.optimizer.minimize(self.total_loss, global_step=self.global_step)  # var_list=t_vars)
             else:
                 self.X = tf.placeholder(tf.float32, shape=(cfg.batch_size, 28, 28, 1))
                 self.labels = tf.placeholder(tf.int32, shape=(cfg.batch_size, ))

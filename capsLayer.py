@@ -44,7 +44,8 @@ class CapsLayer(object):
             if not self.with_routing:
                 # the PrimaryCaps layer, a convolutional layer
                 # input: [batch_size, 20, 20, 256]
-                assert input.get_shape() == [cfg.batch_size, 20, 20, 256]
+
+                #assert input.get_shape() == [cfg.batch_size, 20, 20, 256]
 
                 '''
                 # version 1, computational expensive
@@ -60,6 +61,7 @@ class CapsLayer(object):
                 assert capsules[0].get_shape() == [cfg.batch_size, 1152, 1, 1]
                 capsules = tf.concat(capsules, axis=2)
                 '''
+
 
                 # version 2, equivalent to version 1 but higher computational
                 # efficiency.
@@ -77,7 +79,9 @@ class CapsLayer(object):
 
                 # [batch_size, 1152, 8, 1]
                 capsules = squash(capsules)
-                assert capsules.get_shape() == [cfg.batch_size, 1152, 8, 1]
+
+                #assert capsules.get_shape() == [cfg.batch_size, 1152, 8, 1]
+
                 return(capsules)
 
         if self.layer_type == 'FC':

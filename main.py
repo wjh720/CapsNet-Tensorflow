@@ -47,7 +47,9 @@ def train(model, supervisor, num_label):
     fd_train_acc, fd_loss, fd_val_acc = save_to()
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
+    print('asda')
     with supervisor.managed_session(config=config) as sess:
+        print('123')
         print("\nNote: all of results will be saved to directory: " + cfg.results)
         for epoch in range(cfg.epoch):
             print('Training for epoch ' + str(epoch) + '/' + str(cfg.epoch) + ':')

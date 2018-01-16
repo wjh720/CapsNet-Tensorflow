@@ -91,6 +91,7 @@ class CapsNet(object):
             # 2. Reconstructe the MNIST images with 3 FC layers
             # [batch_size, 1, 16, 1] => [batch_size, 16] => [batch_size, 512]
             with tf.variable_scope('Decoder'):
+                print(self.masked_v.shape)
                 vector_j = tf.reshape(self.masked_v, shape=(cfg.batch_size, -1))
                 print(vector_j.shape)
                 time.sleep(10)

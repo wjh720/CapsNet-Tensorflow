@@ -9,6 +9,7 @@ import tensorflow as tf
 from config import cfg
 from utils import get_batch_data
 from capsLayer import CapsLayer
+import time
 
 
 epsilon = 1e-9
@@ -92,6 +93,7 @@ class CapsNet(object):
             with tf.variable_scope('Decoder'):
                 vector_j = tf.reshape(self.masked_v, shape=(cfg.batch_size, -1))
                 print(vector_j.shape)
+                time.sleep(10)
                 fc1 = tf.contrib.layers.fully_connected(vector_j, num_outputs=256)
 
                 fc2 = tf.contrib.layers.fully_connected(fc1, num_outputs=512)
